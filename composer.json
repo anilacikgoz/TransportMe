@@ -1,6 +1,6 @@
 {
     "name": "TransportMe",
-    "description": "",
+    "description": "A journey API that developed based on boarding cards and related operations. Also includes an putting in order algorithm by big o notation.",
     "type": "project",
     "license": "GPL-3.0-or-later",
     "authors": [
