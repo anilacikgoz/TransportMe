@@ -1,0 +1,19 @@
+{
+    "name": "getLanguageCode",
+    "description": "",
+    "type": "project",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Anil Acikgoz",
+            "email": "anilacikgoz@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require-dev": {
+    },
+    "require": {
+        "jms/serializer": "1.7.*",
+        "phpdocumentor/phpdocumentor": "2.9"
+    }
+}
