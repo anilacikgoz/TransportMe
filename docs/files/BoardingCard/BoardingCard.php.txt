@@ -1,0 +1,146 @@
+<?php
+
+namespace Src\BoardingCard;
+use Src\Destination\Destination;
+
+/**
+ * Abstract class for boarding cards that based on differences/commons between transportation types.
+ */
+abstract class BoardingCard implements \Serializable
+{   
+    /**
+     *
+     * @var int
+     */
+    protected $boardingCardId;
+    
+    /**
+     * 
+     * @var \Src\Destination\Destination
+     */
+    protected $departure;
+    
+    /**
+     *
+     * @var \Src\Destination\Destination
+     */
+    protected $arrival;
+    
+    /**
+     *
+     * @var string
+     */
+    protected $passenger;
+    
+    /**
+     * Boarding card referance number. 
+     * All boarding cards has same referance number in a journey. 
+     * @var string
+     */
+    protected $reference;
+    
+    
+    /**
+     * Setter function for boardingCardId
+     * @param int $boardingCardId
+     */
+    public function setBoardingCardId(int $boardingCardId):void
+    {
+        $this->boardingCardId =$boardingCardId;
+    }
+    
+    /**
+     * Setter function for departure destination. 
+     * @param Destination $departure
+     */
+    public function setDeparture(Destination $departure):void
+    {
+        $this->departure = $departure;
+    }
+    
+    /**
+     * Setter function for arrival destination.
+     * @param Destination $arrival
+     */
+    public function setArrival(Destination $arrival):void
+    {
+        $this->arrival = $arrival;
+    }
+    
+    /**
+     * Setter function for passenger. 
+     * @param string $passenger
+     */
+    public  function setPassenger (string $passenger):void
+    {
+        $this->passenger = $passenger;
+    }
+    
+    /**
+     * Setter function for reference. 
+     * @param string $referance
+     */
+    public function setReference(string $referance):void
+    {
+        $this->reference = $referance;
+    }
+    
+    /**
+     * Getter function boarding card id.
+     * @return string
+     */
+    public function getBoardingCardId(): string
+    {
+        return $this->boardingCardId ;
+    }
+    
+    /**
+     * Getter function for departure destination. 
+     * @return Destinationü
+     */
+    public function getDeparture():Destination
+    {
+        return $this->departure;
+    }
+    
+    /**
+     * Getter function for arrival destination. 
+     * @return Destination
+     */
+    public function getArrival():Destination
+    {
+       return  $this->arrival;
+    }
+    
+    /**
+     * Getter function for passanger. 
+     * @return string
+     */
+    public  function getPassenger():string
+    {
+        return $this->passenger;
+    }
+    
+    /**
+     * Getter function for referance. 
+     * @return string
+     */
+    public function getReference(): string
+    {
+       return $this->reference;
+    }
+    
+    /**
+     * Abstract function for serializing.
+     * This function can usa for data operation to other services. 
+     * 
+     */
+    abstract function serialize();
+    
+    /**
+     * Abstract function for unserializing.
+     * This function can usa for data operation from other services. 
+     * 
+     */
+    abstract function unserialize($serialized);
+}

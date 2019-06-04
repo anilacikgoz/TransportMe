@@ -1,0 +1,116 @@
+<?php
+namespace Src\BoardingCard;
+use Src\BoardingCard\BoardingCard;
+use Src\Destination\Destination;
+
+/**
+ * This class extends from BoardingCard for Highway boarding cards.
+ */
+final class HighWayBoardingCard extends BoardingCard implements \Serializable
+{
+    /**
+     *
+     * @var string
+     */
+    private $busNo;
+    
+    /**
+     *
+     * @var string
+     */
+    private $platformNo;
+    
+    /**
+     * Construct function for HighWayBoardingCard object.
+     * @param int $boardingCardId
+     * @param Destination $departure
+     * @param Destination $arrival
+     * @param string $passenger
+     * @param string $reference
+     * @param string $busNo
+     * @param string $plaformNo
+     */
+    public function __construct(int $boardingCardId,Destination $departure,Destination $arrival,string $passenger, string $reference, string $busNo, string $plaformNo) {
+        
+        $this->boardingCardId = $boardingCardId;
+        $this->arrival = $arrival;
+        $this->departure = $departure;
+        $this->passenger = $passenger;
+        $this->reference = $reference;
+        $this->busNo = $busNo;
+        $this->platformNo = $plaformNo;
+    }
+
+    /**
+     * Setter function for bus no. 
+     * @param string $busNo
+     */
+    public  function setBusNo(string $busNo) : void
+    {
+        $this->busNo = $busNo;   
+    }
+    
+    /**
+     * Setter function for platform no.
+     * @param string $platformNo
+     */
+    public function setPlatformNo(string $platformNo): void
+    {
+        $this->platformNo = $platformNo;
+    }
+    
+    /**
+     * Getter function for bus no. 
+     * @return string
+     */
+    public function getBusNo():string
+    {
+        return $this->busNo;
+    }
+    
+    /**
+     * Getter function for platform no. 
+     * @return string
+     */
+    public function getPlatformNo():string
+    {
+     return $this->platformNo;   
+    }
+    
+    /**
+     * Serialize function for AirWayBoardingCard object. 
+     * It can be use for varius data operations in the future. 
+     * @return string
+     */
+    public function serialize() 
+    {
+            return serialize([
+                            'boardingCardNumber'=>$this->boardingCardId,
+                            'arrival'=>$this->arrival, 
+                            'departure'=>$this->departure, 
+                            'passenger'=>$this->passenger,
+                            'reference'=>$this->reference,
+                            'busNo'=>$this->busNo,
+                            'platformNo'=>$this->platformNo
+            ]);
+    }
+    
+    /**     
+     * Unserialize function for HighWayBoardingCard object.
+     * @param string $serialized
+     * @return array
+     */
+    public function unserialize($serialized) 
+    {
+        return list(
+                $this->boardingCardId,
+                            $this->arrival, 
+                            $this->departure, 
+                            $this->passenger,
+                            $this->reference,
+                            $this->busNo,
+                            $this->platformNo,
+            ) = unserialize($serialized);
+    }
+}
+

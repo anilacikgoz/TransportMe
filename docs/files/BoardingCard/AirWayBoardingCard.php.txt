@@ -1,0 +1,171 @@
+<?php
+namespace Src\BoardingCard;
+use Src\BoardingCard\BoardingCard;
+use Src\Destination\Destination;
+use Src\Baggage\Baggage;
+
+/**
+ * This class extends from BoardingCard for Airway boarding cards.
+ */
+class AirWayBoardingCard extends BoardingCard implements \Serializable
+{
+    /**
+     *
+     * @var string
+     */
+    private $flightNo;
+    /**
+     *
+     * @var string
+     */
+    private $seat;
+    /**
+     *
+     * @var string
+     */
+    private $gate;
+    /**
+     *
+     * @var \Src\Baggage\Baggage
+     */
+    private $baggage;
+    
+    /**
+     * Construct function for AirWayBoardingCard class.
+     * @param int $boardingCardId
+     * @param Destination $departure
+     * @param Destination $arrival
+     * @param string $passenger
+     * @param string $reference
+     * @param string $flight
+     * @param string $seat
+     * @param string $gate
+     * @param Baggage $baggage
+     */
+    public function __construct(int $boardingCardId,Destination $departure,Destination $arrival,string $passenger,string $reference, string $flight,string $seat, string $gate, Baggage $baggage) {
+        
+        $this->arrival = $arrival;
+        $this->boardingCardId = $boardingCardId;
+        $this->departure = $departure;
+        $this->passenger = $passenger;
+        $this->reference = $reference;
+        $this->flightNo = $flight;
+        $this->seat  = $seat;
+        $this->gate = $gate;
+        $this->baggage = $baggage;
+    }
+    /**
+     * Setter function for $flight
+     * @param string $flight
+     */
+    public function setFlight(string $flight):void
+    {
+        $this->flightNo  =$flight;
+    }
+    
+    /**
+     * Setter function for $seat
+     * @param string $seat
+     */
+    public function setSeat(string $seat):void
+    {
+        $this->setSeat($seat);
+    }
+    
+    /**
+     * Setter function for $gate
+     * @param string $gate
+     */
+    public function setGate(string $gate):void
+    {
+        $this->setGate($gate);
+    }
+    
+    /**
+     * Setter function for $baggage
+     * @param Baggage $baggage
+     */
+    public function setBaggage(Baggage $baggage) : void
+    {
+        $this->baggage = $baggage;
+    }
+    
+    /**
+     * Getter function for flight
+     * @return string
+     */
+    public function getFlight(): string
+    {
+        return $this->getFlight();
+    }
+    
+    /**
+     * Getter function for seat.
+     * @return string
+     */
+    public function getSeat(): string
+    {
+        return $this->seat;
+    }
+    
+    /**
+     * Getter functiın for gate
+     * @return string
+     */
+    public function getGate(): string
+    {
+        return $this->gate;
+    }
+    
+    /**
+     * Getter function for baggage
+     * @return Baggage
+     */
+    public function getBaggage(): Baggage
+    {
+        return $this->baggage;
+    }
+    
+    /**
+     * Serialize function for AirWayBoardingCard object. 
+     * It can be use for varius data operations in the future. 
+     * @return string
+     */
+    public function serialize() {
+        return serialize([
+                            'boardingCardNumber'=>$this->boardingCardId,
+                            'arrival'=>$this->arrival, 
+                            'departure'=>$this->departure, 
+                            'passenger'=>$this->passenger,
+                            'reference'=>$this->reference,
+                            'flightNo'=>$this->flightNo,
+                            'gate'=>$this->gate,
+                            'seat'=>$this->seat,
+                            'baggage' => $this->baggage
+            ]);
+        
+    }
+    
+    /**
+     * Unserialize function for AirWayBoardingCard object.
+     * @param string $serialized
+     * @return array
+     */
+    public function unserialize($serialized) {
+        
+        return list(
+                            $this->boardingCardId,
+                            $this->arrival, 
+                            $this->departure, 
+                            $this->passenger,
+                            $this->reference,
+                            $this->flightNo,
+                            $this->gate,
+                            $this->seat,
+                            $this->baggage
+            ) = unserialize($serialized);
+    }
+}
+
+
+

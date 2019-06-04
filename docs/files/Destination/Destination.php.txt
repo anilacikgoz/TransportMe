@@ -1,0 +1,95 @@
+<?php
+namespace Src\Destination;
+use \Src\TransportationType\TransportationType;
+
+/**
+ * Destination class for departure and arrival places. 
+ */
+class Destination
+{
+    /**
+     *
+     * @var int
+     */
+    private $destinationId;
+    
+    /**
+     *
+     * @var string
+     */
+    private $destinationName;
+    
+    /**
+     *
+     * @var \Src\TransportationType\TransportationType
+     */
+    private $transportationType;
+    
+    /**
+     * Construct function for Destination object.
+     * @param int $destinationId
+     * @param string $destinationName
+     * @param TransportationType $transportationType
+     */
+    public function __construct(int $destinationId, string $destinationName, TransportationType $transportationType) {
+     
+        $this->destinationId = $destinationId;
+        $this->destinationName = $destinationName;
+        $this->transportationType = $transportationType;
+    }
+    
+    /**
+     * Stter function for destination id.
+     * @param type $destinationId
+     */
+    public function setDestinationId($destinationId):void
+    {
+        $this->destinationId  = $destinationId;
+    }
+    
+    /**
+     * Setter function destination name.
+     * @param type $destinationName
+     */
+    public function setDestinationName($destinationName):void
+    {
+        $this->destinationName  = $destinationName;
+    }
+    
+    /**
+     * Setter function for transportation type. 
+     * @param TransportationType $transportationType
+     */
+    public function setTransportationType(TransportationType $transportationType)
+    {
+        $this->transportationType = $transportationType;
+    }
+    
+    /**
+     * Getter function for destination id. 
+     * @return int
+     */
+    public function getDestinationId():int
+    {
+        return $this->destinationId ;
+    }
+    
+    /**
+     * Getter function for destination name. 
+     * @return string
+     */
+    public function getDestinationName():string
+    {
+        return $this->destinationName;
+    }
+    
+    /**
+     * Getter function for transportation type. 
+     * @return TransportationType
+     */
+    public function getTransportationType(): TransportationType
+    {
+        return $this->transportationType;
+    }
+    
+}
