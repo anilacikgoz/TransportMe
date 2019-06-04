@@ -12,16 +12,15 @@ use Src\Destination\Destination;
 use Src\Baggage\Baggage;
 use Src\Baggage\BaggageType;
 use Src\Journey\Journey;
-use src\TransportationType\TransportationType;
-use Tests\JourneyTest;
+use Src\TransportationType\TransportationType;
 use PHPUnit\Framework\TestCase;
-use Src\BoardingCard\BoardingCard;
 
 class JourneyTest extends TestCase
 {
     /**
      * Gets started point(by destinationId field) for unordered journey data that includes boarding cards.
      */
+
     public function testGetStartedPoint()
     {
         $journey = $this->prepareJourneyData();
